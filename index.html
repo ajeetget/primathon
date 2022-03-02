@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Project</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
+	<style>
+		*{margin: 0; padding: 0;}
+		body{background: #fafafa;}
+		.wrapper{
+			box-sizing: border-box;
+			width: 70%;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 50px 20px;
+		}
+		.wrapper-left, .wrapper-right{
+			box-sizing: border-box;
+			padding: 20px;
+			width: 48%;
+			background: #fff;
+			box-shadow: 0 21px 41px -13px rgb(0 0 0 / 18%);
+		}
+		.wrapper h2{
+			text-align: center;
+			padding-bottom: 10px;
+			margin-bottom: 25px;
+			border-bottom: 1px solid rgba(0,0,0,0.2);
+		}
+		.wrapper input[type="text"]{
+			width: 100%;
+			box-sizing: border-box;
+			padding: 8px 20px;
+			margin-bottom: 20px;
+			outline: none;
+		}
+		.wrapper button[type="button"]{
+			width: 100%;
+			border: 0;
+			outline: none;
+			background: #144F5A;
+			box-sizing: border-box;
+			padding: 9px 0;
+			text-align: center;
+			color: #fff;
+			font-size: 1.3rem;
+			cursor: pointer;
+			margin-bottom: 30px;
+		}
+		.wrapper h3{
+			padding: 10px 0;
+			font-size: 1.6rem;
+		}
+		.num_active h3{color: green;}
+		.danger{color: red;}
+		.success{color: green;}
+
+		@media only screen and (max-width: 768px){
+			.wrapper{
+				width: 100%;
+			}
+		}
+		@media only screen and (max-width: 640px){
+			.wrapper-left, .wrapper-right{
+				width: 100%;
+			}
+			.wrapper-left{
+				margin-bottom: 30px;
+			}
+			.wrapper h3{			
+				font-size: 1.2rem;
+			}
+		}
+	</style>
+</head>
+
+<body> 
+	<div class="wrapper">
+		<div class="wrapper-left">
+			<h2>Find Eligible to Vote or Not</h2>
+			<input type="text" name="age" id="age" placeholder="Enter The Age" />
+			<button type="button" id="age_btn"> Check Eligibility</button>
+			<div id="eligible"></div>
+
+		</div>
+		<div class="wrapper-right">
+			<h2>Find the Reverse Number</h2>
+			<input type="text" name="reverse" id="reverse" placeholder="Enter The Number" />
+			<button type="button" id="reverse_btn"> Find Reverse Number </button>
+			<div id="num_sec" class="num_active"></div>
+		</div>
+	</div>
+
+
+
+<script>
+	document.getElementById("reverse_btn").addEventListener('click', () => {
+		let x = document.getElementById("reverse").value;
+		const y = Array.from(x);
+		const z = y.length;
+		let init = z-1;
+		let i=0;
+		let str = "";
+		for(let j = init; j >= 0; j--){    
+       		str += y[j];
+     		i++;
+     	}
+		document.getElementById("num_sec").innerHTML = `<h3> The Reverse Number is =  ${str} </h3>`;
+	});
+
+
+	document.getElementById("age_btn").addEventListener('click', () => {
+		let x = document.getElementById("age").value;
+		(x >= 18) ? document.getElementById("eligible").innerHTML = `<h3 class="success"> You are Elibible for Vote </h3>` : document.getElementById("eligible").innerHTML = `<h3 class="danger"> You are Not Elibible for Vote </h3>`;	
+		
+	});
+
+
+
+
+</script> 
+	
+</body>
+</html>
